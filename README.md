@@ -7,6 +7,29 @@ instead of inventing them.
 
 German documentation: [README.de.md](README.de.md) · [docs/FLD-OS-ERKLAERT.md](docs/FLD-OS-ERKLAERT.md)
 
+![Cockpit: tomorrow's recommendation, the quarter-hourly schedule over the auction price, and the backtested value](docs/screenshots/cockpit.png)
+
+## At a glance
+
+| | |
+|---|---|
+| **Backtest** | 349 real days (1 Nov 2025 – 16 Oct 2026): each day planned the day before on the forecast, settled at actual prices, against continuous operation |
+| **Value** | ≈ 120,000 € more per year and MW than continuous operation (+33 %), for the 1 MWel reference plant model |
+| **Forecast quality** | 88 % of the uplift that perfect foresight would have reached; price forecast MAE 20.5 €/MWh, using only knowledge available before the auction |
+| **Agent** | Enno answers with results from tool calls into the optimizer, never with invented numbers, and shows the guardrails it checked |
+
+## Screenshots
+
+| Enno explains the decision | What-if: re-optimize the day live |
+|---|---|
+| ![Enno](docs/screenshots/enno.png) | ![What-if](docs/screenshots/was-waere-wenn.png) |
+| **Backtest: cumulative uplift over 349 days** | **Sensitivity: which assumption moves revenue most** |
+| ![Backtest](docs/screenshots/backtest.png) | ![Sensitivity](docs/screenshots/sensitivitaet.png) |
+
+![Schedule with the decision agent's reasoning and guardrails](docs/screenshots/fahrplan.png)
+
+The interface is in German, because the first operator is a German plant.
+
 ## What it does
 
 | Part | Path | Content |
