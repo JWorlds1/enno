@@ -1,0 +1,32 @@
+# FLD OS — Postgres (pgvector) + API + Web. Daten (CSV/Abbildungen) per Volume nach /data.
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: fldos
+      POSTGRES_PASSWORD: ${FLD_PG_PASSWORD:?FLD_PG_PASSWORD setzen}
+      POSTGRES_DB: fld_os
+    volumes: [pgdata:/var/lib/postgresql/data]
+
+  api:
+    build: .
+    restart: unless-stopped
+    depends_on: [db]
+    env_file: [.env]
+    environment:
+      FLD_DATABASE_URL: postgresql+asyncpg://fldos:${FLD_PG_PASSWORD}@db:5432/fld_os
+      FLD_TENANT_ID: fld-technologies
+    volumes: [./data:/data:ro]
+
+  web:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    depends_on: [api]
+    ports: ["127.0.0.1:8080:80"]
+    volumes:
+      - ./web/dist:/usr/share/nginx/html:ro
+      - ./web/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+volumes:
+  pgdata:

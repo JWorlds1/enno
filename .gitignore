@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.log
+.DS_Store
+# Marktdaten/Prognosen/Abbildungen: lokal bzw. per Volume, nicht im Repo
+data/
+artifacts/
+web/node_modules/
+web/dist/
+
+# Playwright
+web/test-results/
+web/playwright-report/

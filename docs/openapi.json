@@ -1,0 +1,4276 @@
+{
+  "components": {
+    "schemas": {
+      "BacktestPoint": {
+        "properties": {
+          "algo": {
+            "title": "Algo",
+            "type": "string"
+          },
+          "day": {
+            "format": "date",
+            "title": "Day",
+            "type": "string"
+          },
+          "exp_fc": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exp Fc"
+          },
+          "flat": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flat"
+          },
+          "forecast": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forecast"
+          },
+          "ok": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ok"
+          },
+          "perfect": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Perfect"
+          },
+          "up_fc": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Up Fc"
+          },
+          "up_pf": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Up Pf"
+          }
+        },
+        "required": [
+          "day",
+          "algo"
+        ],
+        "title": "BacktestPoint",
+        "type": "object"
+      },
+      "BandPoint": {
+        "properties": {
+          "aci_cov_24h": {
+            "title": "Aci Cov 24H",
+            "type": "number"
+          },
+          "aci_hi": {
+            "title": "Aci Hi",
+            "type": "number"
+          },
+          "aci_lo": {
+            "title": "Aci Lo",
+            "type": "number"
+          },
+          "actual": {
+            "title": "Actual",
+            "type": "number"
+          },
+          "raw_hi": {
+            "title": "Raw Hi",
+            "type": "number"
+          },
+          "raw_lo": {
+            "title": "Raw Lo",
+            "type": "number"
+          },
+          "ts": {
+            "title": "Ts",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ts",
+          "actual",
+          "raw_lo",
+          "raw_hi",
+          "aci_lo",
+          "aci_hi",
+          "aci_cov_24h"
+        ],
+        "title": "BandPoint",
+        "type": "object"
+      },
+      "CdrOut": {
+        "properties": {
+          "break_even_co2": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Break Even Co2"
+          },
+          "gas": {
+            "title": "Gas",
+            "type": "number"
+          },
+          "h2": {
+            "title": "H2",
+            "type": "number"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/CdrRow"
+            },
+            "title": "Rows",
+            "type": "array"
+          }
+        },
+        "required": [
+          "rows",
+          "break_even_co2",
+          "gas",
+          "h2"
+        ],
+        "title": "CdrOut",
+        "type": "object"
+      },
+      "CdrRow": {
+        "properties": {
+          "co2": {
+            "title": "Co2",
+            "type": "integer"
+          },
+          "electro_net": {
+            "title": "Electro Net",
+            "type": "number"
+          },
+          "plasma_carbon_t": {
+            "title": "Plasma Carbon T",
+            "type": "number"
+          },
+          "plasma_h2_mwh": {
+            "title": "Plasma H2 Mwh",
+            "type": "number"
+          },
+          "plasma_net": {
+            "title": "Plasma Net",
+            "type": "number"
+          },
+          "plasma_pyro": {
+            "title": "Plasma Pyro",
+            "type": "number"
+          },
+          "plasma_uplift": {
+            "title": "Plasma Uplift",
+            "type": "number"
+          }
+        },
+        "required": [
+          "co2",
+          "plasma_net",
+          "plasma_uplift",
+          "plasma_carbon_t",
+          "plasma_h2_mwh",
+          "plasma_pyro",
+          "electro_net"
+        ],
+        "title": "CdrRow",
+        "type": "object"
+      },
+      "ChatAction": {
+        "properties": {
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "route": {
+            "title": "Route",
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "route"
+        ],
+        "title": "ChatAction",
+        "type": "object"
+      },
+      "ChatIn": {
+        "properties": {
+          "history": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ChatTurn"
+            },
+            "title": "History",
+            "type": "array"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "page": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Page"
+          },
+          "session_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Session Id"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "title": "ChatIn",
+        "type": "object"
+      },
+      "ChatOut": {
+        "properties": {
+          "actions": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ChatAction"
+            },
+            "title": "Actions",
+            "type": "array"
+          },
+          "mode": {
+            "default": "basis",
+            "title": "Mode",
+            "type": "string"
+          },
+          "reply": {
+            "title": "Reply",
+            "type": "string"
+          },
+          "session_id": {
+            "title": "Session Id",
+            "type": "integer"
+          },
+          "tool_calls": {
+            "default": [],
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "title": "Tool Calls",
+            "type": "array"
+          }
+        },
+        "required": [
+          "reply",
+          "session_id"
+        ],
+        "title": "ChatOut",
+        "type": "object"
+      },
+      "ChatTurn": {
+        "properties": {
+          "content": {
+            "title": "Content",
+            "type": "string"
+          },
+          "role": {
+            "title": "Role",
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "content"
+        ],
+        "title": "ChatTurn",
+        "type": "object"
+      },
+      "CurveMonth": {
+        "properties": {
+          "brent_usd_bbl": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Brent Usd Bbl"
+          },
+          "carbon": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Carbon",
+            "type": "object"
+          },
+          "h2": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "H2"
+          },
+          "interpolated": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Interpolated",
+            "type": "array"
+          },
+          "month": {
+            "title": "Month",
+            "type": "string"
+          },
+          "threshold": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Threshold",
+            "type": "object"
+          },
+          "ttf_eur_mwh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ttf Eur Mwh"
+          }
+        },
+        "required": [
+          "month",
+          "ttf_eur_mwh",
+          "brent_usd_bbl",
+          "h2",
+          "carbon",
+          "threshold",
+          "interpolated"
+        ],
+        "title": "CurveMonth",
+        "type": "object"
+      },
+      "DecisionOut": {
+        "properties": {
+          "guardrails": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guardrails"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "rationale": {
+            "anyOf": [
+              {
+                "items": {},
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rationale"
+          },
+          "scores": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scores"
+          },
+          "strategy": {
+            "title": "Strategy",
+            "type": "string"
+          },
+          "summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary"
+          }
+        },
+        "required": [
+          "strategy"
+        ],
+        "title": "DecisionOut",
+        "type": "object"
+      },
+      "DispatchSlot": {
+        "properties": {
+          "bhkw_mw": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bhkw Mw"
+          },
+          "electrolyser_mw": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Electrolyser Mw"
+          },
+          "pred_price": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pred Price"
+          },
+          "pyro_mw": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pyro Mw"
+          },
+          "reserve_down_mw": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reserve Down Mw"
+          },
+          "reserve_up_mw": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reserve Up Mw"
+          },
+          "slot": {
+            "title": "Slot",
+            "type": "integer"
+          },
+          "ts": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ts"
+          }
+        },
+        "required": [
+          "slot"
+        ],
+        "title": "DispatchSlot",
+        "type": "object"
+      },
+      "EegBudgetOut": {
+        "properties": {
+          "affordable_days": {
+            "title": "Affordable Days",
+            "type": "integer"
+          },
+          "annual_hours": {
+            "title": "Annual Hours",
+            "type": "integer"
+          },
+          "cum_hours": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Cum Hours",
+            "type": "array"
+          },
+          "cum_value": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Cum Value",
+            "type": "array"
+          },
+          "daily_hours": {
+            "title": "Daily Hours",
+            "type": "number"
+          },
+          "pct_of_max": {
+            "title": "Pct Of Max",
+            "type": "number"
+          },
+          "ranking": {
+            "default": "prognose",
+            "title": "Ranking",
+            "type": "string"
+          },
+          "total_days": {
+            "title": "Total Days",
+            "type": "integer"
+          },
+          "value_all": {
+            "title": "Value All",
+            "type": "number"
+          },
+          "value_at_budget": {
+            "title": "Value At Budget",
+            "type": "number"
+          }
+        },
+        "required": [
+          "annual_hours",
+          "daily_hours",
+          "affordable_days",
+          "total_days",
+          "value_at_budget",
+          "value_all",
+          "pct_of_max",
+          "cum_hours",
+          "cum_value"
+        ],
+        "title": "EegBudgetOut",
+        "type": "object"
+      },
+      "Figure": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "title"
+        ],
+        "title": "Figure",
+        "type": "object"
+      },
+      "ForecastBandOut": {
+        "properties": {
+          "calib_n": {
+            "title": "Calib N",
+            "type": "integer"
+          },
+          "coverage": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Coverage",
+            "type": "object"
+          },
+          "cqr_q": {
+            "title": "Cqr Q",
+            "type": "number"
+          },
+          "series": {
+            "items": {
+              "$ref": "#/components/schemas/BandPoint"
+            },
+            "title": "Series",
+            "type": "array"
+          },
+          "target": {
+            "title": "Target",
+            "type": "number"
+          },
+          "test_n": {
+            "title": "Test N",
+            "type": "integer"
+          },
+          "width": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Width",
+            "type": "object"
+          }
+        },
+        "required": [
+          "target",
+          "calib_n",
+          "test_n",
+          "cqr_q",
+          "coverage",
+          "width",
+          "series"
+        ],
+        "title": "ForecastBandOut",
+        "type": "object"
+      },
+      "ForecastPoint": {
+        "properties": {
+          "actual": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Actual"
+          },
+          "p10": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P10"
+          },
+          "p90": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P90"
+          },
+          "pred_a": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pred A"
+          },
+          "pred_b": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pred B"
+          },
+          "ts": {
+            "format": "date-time",
+            "title": "Ts",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ts"
+        ],
+        "title": "ForecastPoint",
+        "type": "object"
+      },
+      "FrontierPoint": {
+        "properties": {
+          "bhkw_h": {
+            "title": "Bhkw H",
+            "type": "number"
+          },
+          "cvar": {
+            "title": "Cvar",
+            "type": "number"
+          },
+          "expected": {
+            "title": "Expected",
+            "type": "number"
+          },
+          "lam": {
+            "title": "Lam",
+            "type": "number"
+          }
+        },
+        "required": [
+          "lam",
+          "expected",
+          "cvar",
+          "bhkw_h"
+        ],
+        "title": "FrontierPoint",
+        "type": "object"
+      },
+      "FundamentalPoint": {
+        "properties": {
+          "day": {
+            "format": "date",
+            "title": "Day",
+            "type": "string"
+          },
+          "eua_co2_eur_t": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Eua Co2 Eur T"
+          },
+          "ttf_gas_eur_mwh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ttf Gas Eur Mwh"
+          }
+        },
+        "required": [
+          "day"
+        ],
+        "title": "FundamentalPoint",
+        "type": "object"
+      },
+      "HeatmapOut": {
+        "properties": {
+          "hours": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Hours",
+            "type": "array"
+          },
+          "matrix": {
+            "items": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            "title": "Matrix",
+            "type": "array"
+          },
+          "max": {
+            "title": "Max",
+            "type": "number"
+          },
+          "min": {
+            "title": "Min",
+            "type": "number"
+          },
+          "weekdays": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Weekdays",
+            "type": "array"
+          }
+        },
+        "required": [
+          "weekdays",
+          "hours",
+          "matrix",
+          "min",
+          "max"
+        ],
+        "title": "HeatmapOut",
+        "type": "object"
+      },
+      "MeasurementsIn": {
+        "properties": {
+          "csv": {
+            "title": "Csv",
+            "type": "string"
+          }
+        },
+        "required": [
+          "csv"
+        ],
+        "title": "MeasurementsIn",
+        "type": "object"
+      },
+      "MeasurementsOut": {
+        "properties": {
+          "from_ts": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "From Ts"
+          },
+          "rows": {
+            "title": "Rows",
+            "type": "integer"
+          },
+          "to_ts": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "To Ts"
+          }
+        },
+        "required": [
+          "rows"
+        ],
+        "title": "MeasurementsOut",
+        "type": "object"
+      },
+      "ModelOut": {
+        "properties": {
+          "bias_eur_mwh": {
+            "title": "Bias Eur Mwh",
+            "type": "number"
+          },
+          "coverage_p10_p90": {
+            "title": "Coverage P10 P90",
+            "type": "number"
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "from_day": {
+            "title": "From Day",
+            "type": "string"
+          },
+          "mae_eur_mwh": {
+            "title": "Mae Eur Mwh",
+            "type": "number"
+          },
+          "mae_naive_eur_mwh": {
+            "title": "Mae Naive Eur Mwh",
+            "type": "number"
+          },
+          "to_day": {
+            "title": "To Day",
+            "type": "string"
+          }
+        },
+        "required": [
+          "days",
+          "from_day",
+          "to_day",
+          "mae_eur_mwh",
+          "mae_naive_eur_mwh",
+          "bias_eur_mwh",
+          "coverage_p10_p90"
+        ],
+        "title": "ModelOut",
+        "type": "object"
+      },
+      "MonthRow": {
+        "properties": {
+          "bhkw_pct": {
+            "title": "Bhkw Pct",
+            "type": "number"
+          },
+          "month": {
+            "title": "Month",
+            "type": "string"
+          },
+          "uplift_eur": {
+            "title": "Uplift Eur",
+            "type": "number"
+          }
+        },
+        "required": [
+          "month",
+          "bhkw_pct",
+          "uplift_eur"
+        ],
+        "title": "MonthRow",
+        "type": "object"
+      },
+      "MpcOut": {
+        "properties": {
+          "base_eur": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Base Eur",
+            "type": "array"
+          },
+          "days": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "horizon": {
+            "title": "Horizon",
+            "type": "integer"
+          },
+          "level_base": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Level Base",
+            "type": "array"
+          },
+          "level_mpc": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Level Mpc",
+            "type": "array"
+          },
+          "mpc_eur": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Mpc Eur",
+            "type": "array"
+          },
+          "s_max": {
+            "title": "S Max",
+            "type": "number"
+          },
+          "total_base": {
+            "title": "Total Base",
+            "type": "number"
+          },
+          "total_mpc": {
+            "title": "Total Mpc",
+            "type": "number"
+          },
+          "uplift_per_mw_year": {
+            "title": "Uplift Per Mw Year",
+            "type": "number"
+          }
+        },
+        "required": [
+          "horizon",
+          "s_max",
+          "days",
+          "base_eur",
+          "mpc_eur",
+          "total_base",
+          "total_mpc",
+          "uplift_per_mw_year",
+          "level_base",
+          "level_mpc"
+        ],
+        "title": "MpcOut",
+        "type": "object"
+      },
+      "ParetoOut": {
+        "properties": {
+          "cheaper_than_eua": {
+            "title": "Cheaper Than Eua",
+            "type": "boolean"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "eua": {
+            "title": "Eua",
+            "type": "number"
+          },
+          "front": {
+            "items": {
+              "$ref": "#/components/schemas/ParetoPoint"
+            },
+            "title": "Front",
+            "type": "array"
+          },
+          "gas_cost": {
+            "title": "Gas Cost",
+            "type": "number"
+          },
+          "slope_eur_t": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Slope Eur T"
+          }
+        },
+        "required": [
+          "day",
+          "gas_cost",
+          "eua",
+          "front",
+          "slope_eur_t",
+          "cheaper_than_eua"
+        ],
+        "title": "ParetoOut",
+        "type": "object"
+      },
+      "ParetoPoint": {
+        "properties": {
+          "co2_t": {
+            "title": "Co2 T",
+            "type": "number"
+          },
+          "profit": {
+            "title": "Profit",
+            "type": "number"
+          }
+        },
+        "required": [
+          "co2_t",
+          "profit"
+        ],
+        "title": "ParetoPoint",
+        "type": "object"
+      },
+      "PlantConfigIn": {
+        "additionalProperties": false,
+        "properties": {
+          "params": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Params",
+            "type": "object"
+          }
+        },
+        "required": [
+          "params"
+        ],
+        "title": "PlantConfigIn",
+        "type": "object"
+      },
+      "PlantConfigOut": {
+        "properties": {
+          "applied_to_optimizer": {
+            "title": "Applied To Optimizer",
+            "type": "boolean"
+          },
+          "defaults": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Defaults",
+            "type": "object"
+          },
+          "diff": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/PlantDiff"
+            },
+            "title": "Diff",
+            "type": "object"
+          },
+          "fixed": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Fixed",
+            "type": "array"
+          },
+          "override": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Override",
+            "type": "object"
+          }
+        },
+        "required": [
+          "defaults",
+          "override",
+          "diff",
+          "applied_to_optimizer",
+          "fixed"
+        ],
+        "title": "PlantConfigOut",
+        "type": "object"
+      },
+      "PlantDiff": {
+        "properties": {
+          "default": {
+            "title": "Default",
+            "type": "number"
+          },
+          "plant": {
+            "title": "Plant",
+            "type": "number"
+          }
+        },
+        "required": [
+          "default",
+          "plant"
+        ],
+        "title": "PlantDiff",
+        "type": "object"
+      },
+      "PlasmaOut": {
+        "properties": {
+          "avg": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Avg",
+            "type": "object"
+          },
+          "carbon_credit_eur_t": {
+            "title": "Carbon Credit Eur T",
+            "type": "number"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/PlasmaRow"
+            },
+            "title": "Rows",
+            "type": "array"
+          },
+          "uplift_electro": {
+            "title": "Uplift Electro",
+            "type": "number"
+          },
+          "uplift_pyro": {
+            "title": "Uplift Pyro",
+            "type": "number"
+          }
+        },
+        "required": [
+          "rows",
+          "avg",
+          "uplift_electro",
+          "uplift_pyro",
+          "carbon_credit_eur_t"
+        ],
+        "title": "PlasmaOut",
+        "type": "object"
+      },
+      "PlasmaRow": {
+        "properties": {
+          "carbon_t": {
+            "title": "Carbon T",
+            "type": "number"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "electro": {
+            "title": "Electro",
+            "type": "number"
+          },
+          "gas_pyro_mwh": {
+            "title": "Gas Pyro Mwh",
+            "type": "number"
+          },
+          "h2_mwh": {
+            "title": "H2 Mwh",
+            "type": "number"
+          },
+          "power": {
+            "title": "Power",
+            "type": "number"
+          },
+          "pyro": {
+            "title": "Pyro",
+            "type": "number"
+          }
+        },
+        "required": [
+          "day",
+          "power",
+          "electro",
+          "pyro",
+          "gas_pyro_mwh",
+          "h2_mwh",
+          "carbon_t"
+        ],
+        "title": "PlasmaRow",
+        "type": "object"
+      },
+      "PriceCheck": {
+        "properties": {
+          "factor": {
+            "title": "Factor",
+            "type": "number"
+          },
+          "refs": {
+            "items": {
+              "$ref": "#/components/schemas/PriceRef"
+            },
+            "title": "Refs",
+            "type": "array"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "factor",
+          "refs"
+        ],
+        "title": "PriceCheck",
+        "type": "object"
+      },
+      "PriceItem": {
+        "properties": {
+          "check": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PriceCheck"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "eur_kg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Eur Kg"
+          },
+          "formula": {
+            "title": "Formula",
+            "type": "string"
+          },
+          "inputs": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Inputs",
+            "type": "object"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "eur_kg",
+          "source",
+          "formula",
+          "inputs"
+        ],
+        "title": "PriceItem",
+        "type": "object"
+      },
+      "PriceRef": {
+        "properties": {
+          "comparable": {
+            "title": "Comparable",
+            "type": "boolean"
+          },
+          "date": {
+            "title": "Date",
+            "type": "string"
+          },
+          "deviation_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deviation Pct"
+          },
+          "formula_eur_kg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Formula Eur Kg"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "ref_eur_kg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ref Eur Kg"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "url": {
+            "title": "Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "source",
+          "url",
+          "comparable",
+          "ref_eur_kg",
+          "formula_eur_kg",
+          "deviation_pct"
+        ],
+        "title": "PriceRef",
+        "type": "object"
+      },
+      "ProblemDetails": {
+        "description": "Schema der Fehlerantwort (siehe `problem()`), nur für die OpenAPI-Beschreibung.",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          },
+          "status": {
+            "title": "Status",
+            "type": "integer"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          },
+          "type": {
+            "default": "about:blank",
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "status",
+          "detail"
+        ],
+        "title": "ProblemDetails",
+        "type": "object"
+      },
+      "ProofDay": {
+        "properties": {
+          "basis": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Basis"
+          },
+          "c_eur_kg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "C Eur Kg"
+          },
+          "capture_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Capture Pct"
+          },
+          "correct_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correct Pct"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "h2_eur_kg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "H2 Eur Kg"
+          },
+          "issued": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Issued"
+          },
+          "plus_vs_best_eur": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plus Vs Best Eur"
+          },
+          "revenue": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revenue"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "strom_slots": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Strom Slots"
+          },
+          "switches": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Switches"
+          },
+          "threshold_eur_mwh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Threshold Eur Mwh"
+          }
+        },
+        "required": [
+          "day",
+          "status",
+          "issued",
+          "basis"
+        ],
+        "title": "ProofDay",
+        "type": "object"
+      },
+      "ProofSummary": {
+        "properties": {
+          "capture_pct": {
+            "title": "Capture Pct",
+            "type": "number"
+          },
+          "forecast_days": {
+            "title": "Forecast Days",
+            "type": "integer"
+          },
+          "last_settled": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Settled"
+          },
+          "late_days": {
+            "title": "Late Days",
+            "type": "integer"
+          },
+          "missing_days": {
+            "title": "Missing Days",
+            "type": "integer"
+          },
+          "pending_days": {
+            "title": "Pending Days",
+            "type": "integer"
+          },
+          "plus_vs_best_eur": {
+            "title": "Plus Vs Best Eur",
+            "type": "number"
+          },
+          "settled_days": {
+            "title": "Settled Days",
+            "type": "integer"
+          },
+          "streak_days": {
+            "title": "Streak Days",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "settled_days",
+          "missing_days",
+          "pending_days",
+          "late_days",
+          "streak_days",
+          "forecast_days",
+          "plus_vs_best_eur",
+          "capture_pct",
+          "last_settled"
+        ],
+        "title": "ProofSummary",
+        "type": "object"
+      },
+      "Recommendation": {
+        "properties": {
+          "algo": {
+            "title": "Algo",
+            "type": "string"
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At"
+          },
+          "kpis": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Kpis"
+          },
+          "slots": {
+            "items": {
+              "$ref": "#/components/schemas/DispatchSlot"
+            },
+            "title": "Slots",
+            "type": "array"
+          },
+          "target_day": {
+            "format": "date",
+            "title": "Target Day",
+            "type": "string"
+          }
+        },
+        "required": [
+          "target_day",
+          "algo",
+          "slots"
+        ],
+        "title": "Recommendation",
+        "type": "object"
+      },
+      "RegelPoint": {
+        "properties": {
+          "day": {
+            "format": "date",
+            "title": "Day",
+            "type": "string"
+          },
+          "price_eur_mw_h": {
+            "title": "Price Eur Mw H",
+            "type": "number"
+          },
+          "product": {
+            "title": "Product",
+            "type": "string"
+          }
+        },
+        "required": [
+          "day",
+          "product",
+          "price_eur_mw_h"
+        ],
+        "title": "RegelPoint",
+        "type": "object"
+      },
+      "RevenueStackOut": {
+        "properties": {
+          "afrr": {
+            "title": "Afrr",
+            "type": "number"
+          },
+          "afrr_neg": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Afrr Neg"
+          },
+          "avg_uplift": {
+            "title": "Avg Uplift",
+            "type": "number"
+          },
+          "fcr": {
+            "title": "Fcr",
+            "type": "number"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/StackRow"
+            },
+            "title": "Rows",
+            "type": "array"
+          },
+          "uplift_per_mw_year": {
+            "title": "Uplift Per Mw Year",
+            "type": "number"
+          }
+        },
+        "required": [
+          "afrr",
+          "fcr",
+          "rows",
+          "avg_uplift",
+          "uplift_per_mw_year"
+        ],
+        "title": "RevenueStackOut",
+        "type": "object"
+      },
+      "RiskOut": {
+        "properties": {
+          "alpha": {
+            "title": "Alpha",
+            "type": "number"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "eev": {
+            "title": "Eev",
+            "type": "number"
+          },
+          "evpi": {
+            "title": "Evpi",
+            "type": "number"
+          },
+          "frontier": {
+            "items": {
+              "$ref": "#/components/schemas/FrontierPoint"
+            },
+            "title": "Frontier",
+            "type": "array"
+          },
+          "rp": {
+            "title": "Rp",
+            "type": "number"
+          },
+          "scenarios": {
+            "title": "Scenarios",
+            "type": "integer"
+          },
+          "vss": {
+            "title": "Vss",
+            "type": "number"
+          },
+          "ws": {
+            "title": "Ws",
+            "type": "number"
+          }
+        },
+        "required": [
+          "day",
+          "scenarios",
+          "alpha",
+          "rp",
+          "eev",
+          "ws",
+          "vss",
+          "evpi",
+          "frontier"
+        ],
+        "title": "RiskOut",
+        "type": "object"
+      },
+      "SensitivityBar": {
+        "properties": {
+          "base_value": {
+            "title": "Base Value",
+            "type": "number"
+          },
+          "high_net": {
+            "title": "High Net",
+            "type": "number"
+          },
+          "high_value": {
+            "title": "High Value",
+            "type": "number"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "low_net": {
+            "title": "Low Net",
+            "type": "number"
+          },
+          "low_value": {
+            "title": "Low Value",
+            "type": "number"
+          },
+          "param": {
+            "title": "Param",
+            "type": "string"
+          },
+          "swing": {
+            "title": "Swing",
+            "type": "number"
+          }
+        },
+        "required": [
+          "param",
+          "label",
+          "base_value",
+          "low_value",
+          "high_value",
+          "low_net",
+          "high_net",
+          "swing"
+        ],
+        "title": "SensitivityBar",
+        "type": "object"
+      },
+      "SensitivityOut": {
+        "properties": {
+          "bars": {
+            "items": {
+              "$ref": "#/components/schemas/SensitivityBar"
+            },
+            "title": "Bars",
+            "type": "array"
+          },
+          "base_net": {
+            "title": "Base Net",
+            "type": "number"
+          },
+          "delta": {
+            "title": "Delta",
+            "type": "number"
+          },
+          "mode": {
+            "title": "Mode",
+            "type": "string"
+          },
+          "with_eeg": {
+            "default": false,
+            "title": "With Eeg",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "mode",
+          "delta",
+          "base_net",
+          "bars"
+        ],
+        "title": "SensitivityOut",
+        "type": "object"
+      },
+      "ShadowDay": {
+        "properties": {
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "energy_meas_mwh": {
+            "title": "Energy Meas Mwh",
+            "type": "number"
+          },
+          "energy_rec_mwh": {
+            "title": "Energy Rec Mwh",
+            "type": "number"
+          },
+          "extra_same_energy_eur": {
+            "title": "Extra Same Energy Eur",
+            "type": "number"
+          },
+          "price_meas_eur_mwh": {
+            "title": "Price Meas Eur Mwh",
+            "type": "number"
+          },
+          "price_rec_eur_mwh": {
+            "title": "Price Rec Eur Mwh",
+            "type": "number"
+          },
+          "revenue_meas_eur": {
+            "title": "Revenue Meas Eur",
+            "type": "number"
+          },
+          "revenue_rec_eur": {
+            "title": "Revenue Rec Eur",
+            "type": "number"
+          }
+        },
+        "required": [
+          "day",
+          "energy_rec_mwh",
+          "energy_meas_mwh",
+          "revenue_rec_eur",
+          "revenue_meas_eur",
+          "price_rec_eur_mwh",
+          "price_meas_eur_mwh",
+          "extra_same_energy_eur"
+        ],
+        "title": "ShadowDay",
+        "type": "object"
+      },
+      "ShadowOut": {
+        "properties": {
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/ShadowDay"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "measurements": {
+            "title": "Measurements",
+            "type": "integer"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/ShadowSummary"
+          }
+        },
+        "required": [
+          "days",
+          "summary",
+          "measurements"
+        ],
+        "title": "ShadowOut",
+        "type": "object"
+      },
+      "ShadowSummary": {
+        "properties": {
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "extra_same_energy_eur": {
+            "title": "Extra Same Energy Eur",
+            "type": "number"
+          },
+          "per_day_eur": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Per Day Eur"
+          }
+        },
+        "required": [
+          "days",
+          "extra_same_energy_eur"
+        ],
+        "title": "ShadowSummary",
+        "type": "object"
+      },
+      "SplitSlot": {
+        "properties": {
+          "price": {
+            "title": "Price",
+            "type": "number"
+          },
+          "route": {
+            "title": "Route",
+            "type": "string"
+          },
+          "sure": {
+            "title": "Sure",
+            "type": "boolean"
+          },
+          "time": {
+            "title": "Time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "time",
+          "price",
+          "route",
+          "sure"
+        ],
+        "title": "SplitSlot",
+        "type": "object"
+      },
+      "SplitterOut": {
+        "properties": {
+          "block_slots": {
+            "title": "Block Slots",
+            "type": "integer"
+          },
+          "blocks": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Blocks",
+            "type": "array"
+          },
+          "c_eur_kg": {
+            "title": "C Eur Kg",
+            "type": "number"
+          },
+          "carbon": {
+            "title": "Carbon",
+            "type": "string"
+          },
+          "h2_eur_kg": {
+            "title": "H2 Eur Kg",
+            "type": "number"
+          },
+          "margin_eur_mwh": {
+            "title": "Margin Eur Mwh",
+            "type": "number"
+          },
+          "min_run_slots": {
+            "title": "Min Run Slots",
+            "type": "integer"
+          },
+          "own_prices": {
+            "title": "Own Prices",
+            "type": "boolean"
+          },
+          "price_basis": {
+            "title": "Price Basis",
+            "type": "string"
+          },
+          "ratio": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Ratio",
+            "type": "object"
+          },
+          "revenue": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Revenue",
+            "type": "object"
+          },
+          "slots": {
+            "items": {
+              "$ref": "#/components/schemas/SplitSlot"
+            },
+            "title": "Slots",
+            "type": "array"
+          },
+          "strom_slots": {
+            "title": "Strom Slots",
+            "type": "integer"
+          },
+          "switches": {
+            "title": "Switches",
+            "type": "integer"
+          },
+          "target_day": {
+            "format": "date",
+            "title": "Target Day",
+            "type": "string"
+          },
+          "threshold_eur_mwh": {
+            "title": "Threshold Eur Mwh",
+            "type": "number"
+          },
+          "unsure_slots": {
+            "title": "Unsure Slots",
+            "type": "integer"
+          },
+          "uplift_vs_best": {
+            "title": "Uplift Vs Best",
+            "type": "number"
+          }
+        },
+        "required": [
+          "target_day",
+          "price_basis",
+          "carbon",
+          "h2_eur_kg",
+          "c_eur_kg",
+          "own_prices",
+          "threshold_eur_mwh",
+          "ratio",
+          "strom_slots",
+          "switches",
+          "unsure_slots",
+          "margin_eur_mwh",
+          "min_run_slots",
+          "block_slots",
+          "blocks",
+          "revenue",
+          "uplift_vs_best",
+          "slots"
+        ],
+        "title": "SplitterOut",
+        "type": "object"
+      },
+      "SplitterPlanOut": {
+        "properties": {
+          "bhkw_h": {
+            "title": "Bhkw H",
+            "type": "number"
+          },
+          "bhkw_mw": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Bhkw Mw",
+            "type": "array"
+          },
+          "c_kg": {
+            "title": "C Kg",
+            "type": "number"
+          },
+          "h2_kg": {
+            "title": "H2 Kg",
+            "type": "number"
+          },
+          "plasma_gas_mw": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Plasma Gas Mw",
+            "type": "array"
+          },
+          "plasma_gas_mwh": {
+            "title": "Plasma Gas Mwh",
+            "type": "number"
+          },
+          "price_basis": {
+            "title": "Price Basis",
+            "type": "string"
+          },
+          "revenue": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Revenue",
+            "type": "object"
+          },
+          "starts": {
+            "title": "Starts",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "storage_mwh": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Storage Mwh",
+            "type": "array"
+          },
+          "target_day": {
+            "format": "date",
+            "title": "Target Day",
+            "type": "string"
+          },
+          "times": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Times",
+            "type": "array"
+          },
+          "uplift_eur": {
+            "title": "Uplift Eur",
+            "type": "number"
+          }
+        },
+        "required": [
+          "target_day",
+          "price_basis",
+          "status",
+          "times",
+          "bhkw_mw",
+          "plasma_gas_mw",
+          "storage_mwh",
+          "revenue",
+          "uplift_eur",
+          "plasma_gas_mwh",
+          "h2_kg",
+          "c_kg",
+          "starts",
+          "bhkw_h"
+        ],
+        "title": "SplitterPlanOut",
+        "type": "object"
+      },
+      "SplitterProofOut": {
+        "properties": {
+          "carbon": {
+            "title": "Carbon",
+            "type": "string"
+          },
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/ProofDay"
+            },
+            "title": "Days",
+            "type": "array"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/ProofSummary"
+          }
+        },
+        "required": [
+          "carbon",
+          "days",
+          "summary"
+        ],
+        "title": "SplitterProofOut",
+        "type": "object"
+      },
+      "SplitterYearOut": {
+        "properties": {
+          "avg_run_h": {
+            "title": "Avg Run H",
+            "type": "number"
+          },
+          "bhkw_runs_per_year": {
+            "title": "Bhkw Runs Per Year",
+            "type": "number"
+          },
+          "bhkw_share_pct": {
+            "title": "Bhkw Share Pct",
+            "type": "number"
+          },
+          "bids": {
+            "additionalProperties": true,
+            "title": "Bids",
+            "type": "object"
+          },
+          "capture_pct": {
+            "title": "Capture Pct",
+            "type": "number"
+          },
+          "carbon": {
+            "title": "Carbon",
+            "type": "string"
+          },
+          "correct_pct": {
+            "title": "Correct Pct",
+            "type": "number"
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "from": {
+            "title": "From",
+            "type": "string"
+          },
+          "hourly_bhkw_pct": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Hourly Bhkw Pct",
+            "type": "array"
+          },
+          "margin_eur_mwh": {
+            "title": "Margin Eur Mwh",
+            "type": "number"
+          },
+          "milp": {
+            "additionalProperties": true,
+            "title": "Milp",
+            "type": "object"
+          },
+          "min_run_h": {
+            "title": "Min Run H",
+            "type": "number"
+          },
+          "monthly": {
+            "items": {
+              "$ref": "#/components/schemas/MonthRow"
+            },
+            "title": "Monthly",
+            "type": "array"
+          },
+          "per_year": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Per Year",
+            "type": "object"
+          },
+          "short_runs_per_year": {
+            "title": "Short Runs Per Year",
+            "type": "number"
+          },
+          "skipped": {
+            "title": "Skipped",
+            "type": "integer"
+          },
+          "switches_per_day": {
+            "title": "Switches Per Day",
+            "type": "number"
+          },
+          "switches_per_year": {
+            "title": "Switches Per Year",
+            "type": "number"
+          },
+          "to": {
+            "title": "To",
+            "type": "string"
+          },
+          "unsure_pct": {
+            "title": "Unsure Pct",
+            "type": "number"
+          },
+          "uplift_vs_best_pct": {
+            "title": "Uplift Vs Best Pct",
+            "type": "number"
+          }
+        },
+        "required": [
+          "carbon",
+          "days",
+          "skipped",
+          "from",
+          "to",
+          "margin_eur_mwh",
+          "min_run_h",
+          "per_year",
+          "uplift_vs_best_pct",
+          "capture_pct",
+          "switches_per_year",
+          "switches_per_day",
+          "bhkw_share_pct",
+          "bhkw_runs_per_year",
+          "avg_run_h",
+          "short_runs_per_year",
+          "correct_pct",
+          "unsure_pct",
+          "bids",
+          "hourly_bhkw_pct",
+          "monthly",
+          "milp"
+        ],
+        "title": "SplitterYearOut",
+        "type": "object"
+      },
+      "StackRow": {
+        "properties": {
+          "capacity": {
+            "title": "Capacity",
+            "type": "number"
+          },
+          "coopt": {
+            "title": "Coopt",
+            "type": "number"
+          },
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "energy": {
+            "title": "Energy",
+            "type": "number"
+          },
+          "reserve_mw": {
+            "title": "Reserve Mw",
+            "type": "number"
+          },
+          "spot_only": {
+            "title": "Spot Only",
+            "type": "number"
+          },
+          "uplift": {
+            "title": "Uplift",
+            "type": "number"
+          }
+        },
+        "required": [
+          "day",
+          "spot_only",
+          "coopt",
+          "energy",
+          "capacity",
+          "uplift",
+          "reserve_mw"
+        ],
+        "title": "StackRow",
+        "type": "object"
+      },
+      "StatusOut": {
+        "properties": {
+          "db": {
+            "title": "Db",
+            "type": "string"
+          },
+          "latest_target_day": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latest Target Day"
+          },
+          "memories": {
+            "title": "Memories",
+            "type": "integer"
+          },
+          "stale": {
+            "title": "Stale",
+            "type": "boolean"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "db",
+          "stale",
+          "memories"
+        ],
+        "title": "StatusOut",
+        "type": "object"
+      },
+      "ValueCurveOut": {
+        "properties": {
+          "as_of": {
+            "title": "As Of",
+            "type": "string"
+          },
+          "eua_eur_t": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Eua Eur T"
+          },
+          "eurusd": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Eurusd"
+          },
+          "months": {
+            "items": {
+              "$ref": "#/components/schemas/CurveMonth"
+            },
+            "title": "Months",
+            "type": "array"
+          }
+        },
+        "required": [
+          "as_of",
+          "eua_eur_t",
+          "eurusd",
+          "months"
+        ],
+        "title": "ValueCurveOut",
+        "type": "object"
+      },
+      "ValueOut": {
+        "properties": {
+          "capture_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Capture Pct"
+          },
+          "days": {
+            "title": "Days",
+            "type": "integer"
+          },
+          "from_day": {
+            "format": "date",
+            "title": "From Day",
+            "type": "string"
+          },
+          "pct_vs_flat": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pct Vs Flat"
+          },
+          "per_day_eur": {
+            "title": "Per Day Eur",
+            "type": "number"
+          },
+          "per_year_eur": {
+            "title": "Per Year Eur",
+            "type": "number"
+          },
+          "to_day": {
+            "format": "date",
+            "title": "To Day",
+            "type": "string"
+          },
+          "uplift_eur": {
+            "title": "Uplift Eur",
+            "type": "number"
+          }
+        },
+        "required": [
+          "days",
+          "from_day",
+          "to_day",
+          "uplift_eur",
+          "per_day_eur",
+          "per_year_eur"
+        ],
+        "title": "ValueOut",
+        "type": "object"
+      },
+      "ValuePricesOut": {
+        "properties": {
+          "as_of": {
+            "title": "As Of",
+            "type": "string"
+          },
+          "carbon": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/PriceItem"
+            },
+            "title": "Carbon",
+            "type": "object"
+          },
+          "h2": {
+            "$ref": "#/components/schemas/PriceItem"
+          }
+        },
+        "required": [
+          "as_of",
+          "h2",
+          "carbon"
+        ],
+        "title": "ValuePricesOut",
+        "type": "object"
+      },
+      "WhatifIn": {
+        "properties": {
+          "algo": {
+            "default": "whatif",
+            "title": "Algo",
+            "type": "string"
+          },
+          "co2": {
+            "default": 79.0,
+            "title": "Co2",
+            "type": "number"
+          },
+          "gas": {
+            "default": 70.0,
+            "title": "Gas",
+            "type": "number"
+          },
+          "h2": {
+            "default": 100.0,
+            "title": "H2",
+            "type": "number"
+          },
+          "mode": {
+            "default": "plasma",
+            "title": "Mode",
+            "type": "string"
+          }
+        },
+        "title": "WhatifIn",
+        "type": "object"
+      },
+      "WhatifOut": {
+        "properties": {
+          "bhkw": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Bhkw",
+            "type": "array"
+          },
+          "bhkw_h": {
+            "title": "Bhkw H",
+            "type": "number"
+          },
+          "carbon_eur": {
+            "title": "Carbon Eur",
+            "type": "number"
+          },
+          "carbon_t": {
+            "title": "Carbon T",
+            "type": "number"
+          },
+          "eeg_premium_eur": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Eeg Premium Eur"
+          },
+          "elcost": {
+            "title": "Elcost",
+            "type": "number"
+          },
+          "electro": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Electro",
+            "type": "array"
+          },
+          "flat_eur": {
+            "title": "Flat Eur",
+            "type": "number"
+          },
+          "flex_eur": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flex Eur"
+          },
+          "gas_cost": {
+            "title": "Gas Cost",
+            "type": "number"
+          },
+          "h2_eur": {
+            "title": "H2 Eur",
+            "type": "number"
+          },
+          "h2_mwh": {
+            "title": "H2 Mwh",
+            "type": "number"
+          },
+          "heat": {
+            "title": "Heat",
+            "type": "number"
+          },
+          "marktwert_eur_mwh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Marktwert Eur Mwh"
+          },
+          "net_eeg_eur": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Net Eeg Eur"
+          },
+          "net_eur": {
+            "title": "Net Eur",
+            "type": "number"
+          },
+          "praemie_eur_mwh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Praemie Eur Mwh"
+          },
+          "praemie_mwh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Praemie Mwh"
+          },
+          "pyro": {
+            "items": {
+              "type": "number"
+            },
+            "title": "Pyro",
+            "type": "array"
+          },
+          "spot": {
+            "title": "Spot",
+            "type": "number"
+          },
+          "starts": {
+            "title": "Starts",
+            "type": "integer"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "uplift_eur": {
+            "title": "Uplift Eur",
+            "type": "number"
+          }
+        },
+        "required": [
+          "net_eur",
+          "flat_eur",
+          "uplift_eur",
+          "spot",
+          "heat",
+          "h2_eur",
+          "carbon_eur",
+          "h2_mwh",
+          "carbon_t",
+          "elcost",
+          "gas_cost",
+          "starts",
+          "bhkw_h",
+          "status",
+          "bhkw",
+          "electro",
+          "pyro"
+        ],
+        "title": "WhatifOut",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "FLD OS API",
+    "version": "0.1.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/v1/backtest": {
+      "get": {
+        "operationId": "backtest_api_v1_backtest_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "algo",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Algo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/BacktestPoint"
+                  },
+                  "title": "Response Backtest Api V1 Backtest Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Backtest"
+      }
+    },
+    "/api/v1/cdr-sensitivity": {
+      "get": {
+        "operationId": "cdr_sensitivity_api_v1_cdr_sensitivity_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "gas",
+            "required": false,
+            "schema": {
+              "default": 70.0,
+              "title": "Gas",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "h2",
+            "required": false,
+            "schema": {
+              "default": 100.0,
+              "title": "H2",
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CdrOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Cdr Sensitivity"
+      }
+    },
+    "/api/v1/chat": {
+      "post": {
+        "operationId": "chat_api_v1_chat_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Chat"
+      }
+    },
+    "/api/v1/chat/{session_id}/history": {
+      "get": {
+        "operationId": "chat_history_api_v1_chat__session_id__history_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "title": "Session Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ChatTurn"
+                  },
+                  "title": "Response Chat History Api V1 Chat  Session Id  History Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Chat History"
+      }
+    },
+    "/api/v1/decision": {
+      "get": {
+        "operationId": "decision_api_v1_decision_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DecisionOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Decision"
+      }
+    },
+    "/api/v1/eeg-budget": {
+      "get": {
+        "description": "Szenario § 39m EEG: die Marktprämie gilt nur für 10 % der Leistung (≈ 876 Volllaststunden je MW). Fährt die\nAnlage nur so viele Stunden — auf welchen Tagen? Rangfolge nach dem Mehrerlös, den die Prognose VOR der Auktion\nerwarten ließ (exp_fc, so wäre es im Betrieb entschieden worden); gezählt wird der tatsächlich erzielte (up_fc).\nAnnahme: jeder Betriebstag verbraucht daily_hours Volllaststunden (= Gasbudget/Tag).",
+        "operationId": "eeg_budget_api_v1_eeg_budget_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "annual_hours",
+            "required": false,
+            "schema": {
+              "default": 876,
+              "maximum": 8784,
+              "minimum": 0,
+              "title": "Annual Hours",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "daily_hours",
+            "required": false,
+            "schema": {
+              "default": 8.0,
+              "exclusiveMinimum": 0,
+              "maximum": 24,
+              "title": "Daily Hours",
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EegBudgetOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Eeg Budget"
+      }
+    },
+    "/api/v1/figures": {
+      "get": {
+        "operationId": "figures_api_v1_figures_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Figure"
+                  },
+                  "title": "Response Figures Api V1 Figures Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Figures"
+      }
+    },
+    "/api/v1/figures/{name}": {
+      "get": {
+        "operationId": "figure_api_v1_figures__name__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Figure"
+      }
+    },
+    "/api/v1/forecast": {
+      "get": {
+        "operationId": "forecast_api_v1_forecast_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ForecastPoint"
+                  },
+                  "title": "Response Forecast Api V1 Forecast Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Forecast"
+      }
+    },
+    "/api/v1/forecast-band": {
+      "get": {
+        "description": "Prognoseband roh / CQR / ACI mit realisierter Abdeckung.",
+        "operationId": "forecast_band_api_v1_forecast_band_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 7,
+              "maximum": 21,
+              "minimum": 1,
+              "title": "Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForecastBandOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Forecast Band"
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Health Api V1 Health Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health"
+      }
+    },
+    "/api/v1/market": {
+      "get": {
+        "operationId": "market_api_v1_market_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FundamentalPoint"
+                  },
+                  "title": "Response Market Api V1 Market Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Market"
+      }
+    },
+    "/api/v1/measurements": {
+      "post": {
+        "description": "Gemessene Einspeisung der Anlage importieren (idempotent je Viertelstunde).",
+        "operationId": "upload_measurements_api_v1_measurements_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MeasurementsIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeasurementsOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Upload Measurements"
+      }
+    },
+    "/api/v1/model": {
+      "get": {
+        "description": "Prognosegüte aus der letzten Tageskette (rollierende Messung, nicht ein einzelner Tag).",
+        "operationId": "model_quality_api_v1_model_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Model Quality"
+      }
+    },
+    "/api/v1/mpc": {
+      "get": {
+        "description": "Rolling-Horizon-MPC vs. tagesisoliert: Erlös und Speicherzustand über Tage.",
+        "operationId": "mpc_state_api_v1_mpc_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 14,
+              "maximum": 30,
+              "minimum": 2,
+              "title": "Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MpcOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Mpc State"
+      }
+    },
+    "/api/v1/pareto": {
+      "get": {
+        "description": "Pareto-Front Erlös ↔ CO₂-Einsparung, Grenzvermeidungskosten vs. EUA.",
+        "operationId": "pareto_api_v1_pareto_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParetoOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Pareto"
+      }
+    },
+    "/api/v1/plant-config": {
+      "get": {
+        "description": "Modell-Defaults, importierte Anlagenwerte und Abweichungen.",
+        "operationId": "plant_config_api_v1_plant_config_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlantConfigOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Plant Config"
+      },
+      "put": {
+        "operationId": "set_plant_config_api_v1_plant_config_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlantConfigIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlantConfigOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Set Plant Config"
+      }
+    },
+    "/api/v1/plasma-compare": {
+      "get": {
+        "description": "Nur Strom vs. Elektrolyse vs. Plasma-Pyrolyse auf Ist-Preisen.",
+        "operationId": "plasma_compare_api_v1_plasma_compare_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 40,
+              "minimum": 1,
+              "title": "Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlasmaOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Plasma Compare"
+      }
+    },
+    "/api/v1/price-heatmap": {
+      "get": {
+        "operationId": "price_heatmap_api_v1_price_heatmap_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeatmapOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Price Heatmap"
+      }
+    },
+    "/api/v1/ready": {
+      "get": {
+        "description": "Bereitschaft: antwortet der Speicher? (/health prüft nur Lebendigkeit, ohne DB.) Mandantenlos.",
+        "operationId": "ready_api_v1_ready_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "503": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Speicher nicht erreichbar"
+          }
+        },
+        "summary": "Ready"
+      }
+    },
+    "/api/v1/recommendation": {
+      "get": {
+        "operationId": "recommendation_api_v1_recommendation_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "algo",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Algo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Recommendation"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Recommendation"
+      }
+    },
+    "/api/v1/recommendation.csv": {
+      "get": {
+        "description": "Fahrplan zum Weitergeben (Leitwarte, Direktvermarkter): Zeit in Marktzeit und UTC, Preis, BHKW, Elektrolyse,\nvorgehaltene Regelleistung nach oben/unten (0, wenn keine Reserve geplant ist).",
+        "operationId": "recommendation_csv_api_v1_recommendation_csv_get",
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {}
+            },
+            "description": "Fahrplan je Viertelstunde (Semikolon, Dezimalkomma)"
+          }
+        },
+        "summary": "Recommendation Csv"
+      }
+    },
+    "/api/v1/regelenergie": {
+      "get": {
+        "operationId": "regelenergie_api_v1_regelenergie_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RegelPoint"
+                  },
+                  "title": "Response Regelenergie Api V1 Regelenergie Get",
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Regelenergie"
+      }
+    },
+    "/api/v1/report": {
+      "get": {
+        "operationId": "report_api_v1_report_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Report"
+      }
+    },
+    "/api/v1/revenue-stack": {
+      "get": {
+        "description": "Erlös-Stapel je Tag: Energie (Spot/Wärme/PtX) + Regelenergie-Kapazität vs. Spot-only.",
+        "operationId": "revenue_stack_api_v1_revenue_stack_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 7,
+              "maximum": 30,
+              "minimum": 1,
+              "title": "Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RevenueStackOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Revenue Stack"
+      }
+    },
+    "/api/v1/risk": {
+      "get": {
+        "description": "mean-CVaR-Effizienzfront + VSS/EVPI für den jüngsten Prognosetag.",
+        "operationId": "risk_api_v1_risk_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Risk"
+      }
+    },
+    "/api/v1/sensitivity": {
+      "get": {
+        "description": "Tornado: Netto-Tageserlös bei ±30 % je Annahme (Gas, H₂, CO₂).",
+        "operationId": "sensitivity_api_v1_sensitivity_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "gas",
+            "required": false,
+            "schema": {
+              "default": 70.0,
+              "minimum": 0,
+              "title": "Gas",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "h2",
+            "required": false,
+            "schema": {
+              "default": 100.0,
+              "minimum": 0,
+              "title": "H2",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "co2",
+            "required": false,
+            "schema": {
+              "default": 79.0,
+              "minimum": 0,
+              "title": "Co2",
+              "type": "number"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mode",
+            "required": false,
+            "schema": {
+              "default": "plasma",
+              "pattern": "^(none|electro|plasma)$",
+              "title": "Mode",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensitivityOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Sensitivity"
+      }
+    },
+    "/api/v1/shadow": {
+      "get": {
+        "description": "Je Liefertag mit Empfehlung und ≥ 90 % Messwerten: Erlös empfohlen vs. gefahren, fair bei gleicher Energie.",
+        "operationId": "shadow_compare_api_v1_shadow_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShadowOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Shadow Compare"
+      }
+    },
+    "/api/v1/splitter": {
+      "get": {
+        "description": "Je Viertelstunde des Liefertags: Gas in Strom oder in H₂ + Kohlenstoff, was mehr bringt (FLD-Verhältnis\naus den Anlagendaten). Preisbasis wie der Fahrplan: Prognose vor der Auktion, danach Auktionspreise.\nAuf der Prognose nur Umschalten mit Abstand ≥ Prognosefehler; BHKW-Läufe mindestens min_up_slots.",
+        "operationId": "splitter_ep_api_v1_splitter_get",
+        "parameters": [
+          {
+            "description": "Kohlenstoff-Verwertung: co2 | cdr | black",
+            "in": "query",
+            "name": "carbon",
+            "required": false,
+            "schema": {
+              "default": "co2",
+              "description": "Kohlenstoff-Verwertung: co2 | cdr | black",
+              "title": "Carbon",
+              "type": "string"
+            }
+          },
+          {
+            "description": "eigener H₂-Preis €/kg statt Preisrechner",
+            "in": "query",
+            "name": "h2",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "exclusiveMinimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "eigener H₂-Preis €/kg statt Preisrechner",
+              "title": "H2"
+            }
+          },
+          {
+            "description": "eigener Kohlenstoffpreis €/kg statt Preisrechner",
+            "in": "query",
+            "name": "c",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "eigener Kohlenstoffpreis €/kg statt Preisrechner",
+              "title": "C"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SplitterOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Splitter Ep"
+      }
+    },
+    "/api/v1/splitter-bids.csv": {
+      "get": {
+        "description": "Gebotsvorschlag für die Day-Ahead-Auktion (Direktvermarkter): je Stunde die BHKW-Leistung mit der Schwelle als\nMindestpreis. Die Börse nimmt einen Block nur, wenn sein Preis darüber liegt — dann Strom, sonst Plasma.",
+        "operationId": "splitter_bids_api_v1_splitter_bids_csv_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "carbon",
+            "required": false,
+            "schema": {
+              "default": "co2",
+              "title": "Carbon",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "h2",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "exclusiveMinimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "H2"
+            }
+          },
+          {
+            "in": "query",
+            "name": "c",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "C"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {}
+            },
+            "description": "Blockgebote je Stunde (Semikolon, Dezimalkomma)"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Splitter Bids"
+      }
+    },
+    "/api/v1/splitter-plan": {
+      "get": {
+        "description": "Splitter im Optimierer für den Liefertag: Gasspeicher, festes Tagesgas, Mindestlast, Starts, Mindestlauf-\nund -stillstandszeit, Wärme-Mindestlauf. Vergleich: dieselbe Anlage nur mit Strom (beide optimal).",
+        "operationId": "splitter_plan_api_v1_splitter_plan_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "carbon",
+            "required": false,
+            "schema": {
+              "default": "co2",
+              "title": "Carbon",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "h2",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "exclusiveMinimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "H2"
+            }
+          },
+          {
+            "in": "query",
+            "name": "c",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "C"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SplitterPlanOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Splitter Plan"
+      }
+    },
+    "/api/v1/splitter-proof": {
+      "get": {
+        "description": "Tagesnachweis: je Liefertag der zuerst ausgegebene Plan (aus der Datenbank, so wie er damals rausging),\nabgerechnet auf die echten Day-Ahead-Preise. Lücken (kein Lauf) bleiben sichtbar.",
+        "operationId": "splitter_proof_api_v1_splitter_proof_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "carbon",
+            "required": false,
+            "schema": {
+              "default": "co2",
+              "title": "Carbon",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "days",
+            "required": false,
+            "schema": {
+              "default": 60,
+              "maximum": 366,
+              "minimum": 1,
+              "title": "Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SplitterProofOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Splitter Proof"
+      }
+    },
+    "/api/v1/splitter-year": {
+      "get": {
+        "description": "Nachrechnung über alle Tage mit Prognose (~12 Monate): Umschaltungen, BHKW-Zeiten, Erlös — Plan auf der\ndamaligen Prognose mit Sicherheitsabstand, abgerechnet auf Ist; dazu die Optimierer-Variante für die letzten Tage.",
+        "operationId": "splitter_year_api_v1_splitter_year_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "carbon",
+            "required": false,
+            "schema": {
+              "default": "co2",
+              "title": "Carbon",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "milp_days",
+            "required": false,
+            "schema": {
+              "default": 14,
+              "maximum": 60,
+              "minimum": 0,
+              "title": "Milp Days",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SplitterYearOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Splitter Year"
+      }
+    },
+    "/api/v1/status": {
+      "get": {
+        "description": "Betriebs-Status fürs Monitoring: DB erreichbar + Datenfrische (Fahrplan ≥ heute?).",
+        "operationId": "status_api_v1_status_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Status"
+      }
+    },
+    "/api/v1/value": {
+      "get": {
+        "description": "Mehrwert aus dem Backtest: Fahrplan auf Prognose, Ist-Preise, gegen Dauerbetrieb (je MW, hochgerechnet aufs Jahr).",
+        "operationId": "value_api_v1_value_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValueOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Value"
+      }
+    },
+    "/api/v1/value-curve": {
+      "get": {
+        "description": "Preiskurve der nächsten 12 Liefermonate: H₂-/Kohlenstoffwert und Splitter-Schwelle aus Terminpreisen (Gas, Öl);\nCO₂ und EUR/USD auf dem heutigen Wert. Lücken zwischen gelisteten Monaten linear, Ränder ohne Verlängerung.",
+        "operationId": "value_curve_api_v1_value_curve_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValueCurveOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Value Curve"
+      }
+    },
+    "/api/v1/value-prices": {
+      "get": {
+        "description": "Fairer Wert für H₂ (grauer H₂ aus Gas + CO₂) und Kohlenstoff (CO₂-Wert, Entnahme-Zertifikat, Industrieruß).",
+        "operationId": "value_prices_ep_api_v1_value_prices_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValuePricesOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Value Prices Ep"
+      }
+    },
+    "/api/v1/whatif": {
+      "post": {
+        "operationId": "whatif_endpoint_api_v1_whatif_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WhatifIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WhatifOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Whatif Endpoint"
+      }
+    }
+  }
+}

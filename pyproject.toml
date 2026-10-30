@@ -1,0 +1,33 @@
+[project]
+name = "fld-os"
+version = "0.1.0"
+description = "FLD OS — Betriebsoptimierungs-Plattform für Biomethan-BHKW, PtX und Plasma-Pyrolyse"
+authors = [{ name = "Ioannis Armoutis" }]
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.26",
+    "pulp>=3.0,<4",  # 4.0 bricht positionale LpVariable-Args; Engine validiert auf 3.3.x
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.7",
+    "sqlalchemy[asyncio]>=2.0",
+    "asyncpg>=0.29",
+    "alembic>=1.13",
+    "pgvector>=0.3",
+    "boto3>=1.34",
+    "pyjwt>=2.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "httpx>=0.27"]
+# Tageskette (python -m fldos.pipeline): Prognosemodell + Excel-Quellen (EEX, regelleistung.net)
+pipeline = ["lightgbm>=4.3", "scikit-learn>=1.5", "openpyxl>=3.1"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = [".", "engine"]
+
+[tool.setuptools]
+packages = ["fldos", "fldos.sources", "fldos.pipeline"]

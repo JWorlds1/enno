@@ -1,0 +1,27 @@
+# Was „grün“ für FLD OS heißt: Backend-Tests (Repo-venv) + Web-Typecheck/Build + End-to-End im echten Browser.
+set -euo pipefail
+# Ein Lauf zur Zeit: alle Läufe teilen DB fld_os, Mandant und Ports 8031/5173 — parallel setzen sich die Tests
+# gegenseitig die Anlagendaten zurück (belegt 10.10.: test_plant rot nur bei gleichzeitigem checks-run). Wartet statt kollidiert.
+# Sperrdatei in ~/.regelwerk/sperren: in der Claude-Sandbox und im Prüf-Käfig von bin/lauf beschreibbar (MB-82);
+# $^F hält sie über exec offen.
+if [ -z "${FLD_CHECKS_LOCKED:-}" ]; then
+  mkdir -p "$HOME/.regelwerk/sperren"
+  exec env FLD_CHECKS_LOCKED=1 perl -MFcntl=:flock -e \
+    '$^F = 255; open(my $f, ">", "$ENV{HOME}/.regelwerk/sperren/fld-os-checks.lock") or die "$!"; flock($f, LOCK_EX) or die "$!"; exec("bash", @ARGV) or die "$!"' "$0" "$@"
+fi
+export PYTHONPATH=.:engine FLD_WARMUP=0
+# Eigene Test-DB (Review H-07): Prüfläufe setzen Anlagendaten zurück und legen Läufe an — nie im Betriebsbestand fld_os.
+# Aufbau je Lauf: Schema per Alembic, Daten aus der letzten Tageskette (data/) per Seed. tests/conftest.py bricht gegen fld_os ab.
+export PATH="/usr/local/opt/postgresql@14/bin:$PATH"
+export FLD_DATABASE_URL="postgresql+asyncpg://$USER@localhost:5432/fld_os_test"
+psql -lqt -h localhost | cut -d'|' -f1 | grep -qw fld_os_test || createdb -h localhost fld_os_test
+psql -qt -h localhost -d fld_os_test -c "CREATE EXTENSION IF NOT EXISTS vector" >/dev/null
+.venv/bin/alembic upgrade head >/dev/null
+.venv/bin/python -m fldos.seed >/dev/null && echo "Test-DB fld_os_test bereit"
+.venv/bin/pytest -q -p no:warnings --ignore=tests/abnahme
+# Abnahme (Lauf r-20261008) eigener Prozess: _client.py setzt FLD_DATABASE_URL=memory:// beim Import und würde
+# sonst jeden später gesammelten Test still von Postgres auf den Speicher umbiegen.
+FLD_DATABASE_URL=memory:// .venv/bin/pytest -q -p no:cacheprovider -p no:warnings --noconftest -c /dev/null --rootdir=. tests/abnahme
+(cd web && npm run --silent build >/dev/null && echo "web build ok")
+# E2E: jeder Knopf, Regler, Upload, Enno-Vorschlag; UI-Werte == API-Werte; a11y hell+dunkel
+(cd web && npx playwright test --reporter=dot)
